@@ -36,13 +36,18 @@ def tax(personage):
     return tax
 
 
-q = input("Do you want a random data set (y/n)? ").lower()
-people = []
-if q == 'y':
-    length = int(input("How many people are you taxing? "))
-    people = randomize(length)
-elif q == 'n':
-    people = list(map(int, input("Please enter in the dataset(ex: 0,2,7,24,63 no spaces): ").split(",")))
-taxes = taxpeople(people)
-for i in range(len(people)):
-    print("Person with age " + str(people[i]) + " has $" + str(taxes[i]) + " in taxes.")
+def run():
+    q = input("Do you want a random data set (y/n)? ").lower()
+    people = []
+    if q == 'y':
+        length = int(input("How many people are you taxing? "))
+        people = randomize(length)
+    elif q == 'n':
+        people = list(map(int, input("Please enter in the dataset(ex: 0,2,7,24,63 no spaces): ").split(",")))
+    people_names = input("What are the names of the people you're taxing (John,Joe etc. no spaces)? ").split(",")
+    taxes = taxpeople(people)
+    for i in range(len(people)):
+        print(people_names[i] + ", " + str(people[i]) + ", has $" + str(taxes[i]) + " in taxes.")
+
+
+run()
